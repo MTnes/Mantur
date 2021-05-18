@@ -1,0 +1,283 @@
+<div class="modal fade" id="addbanner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add banner / Video </h5>
+        <button type="button" class="close close-b" data-dismiss="modal" aria-label="Close">
+          <span>x</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+          <div class="col-lg-12 mx-auto">
+
+            <div class="input-group mb-3 px-2 py-1 bg-white file-upload-bdr">
+              <input id="upload" type="file" onchange="readURL(this);" class="form-control">
+              <label id="upload-label" for="upload" class="font-weight-light text-muted">Fuatured Image</label>
+              <div class="input-group-append">
+                <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose Image</small></label>
+              </div>
+            </div>
+
+            <p class="error font-size-12">Please use image with size less than 3 MB and dimensions 4x3 ratio (450 x 320 Pixels)</p>
+            <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary save-btn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-content">
+  <div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+      <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+          <h4 class="mb-0">Edit Profile</h4>
+
+          <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+              <li class="breadcrumb-item"><a href="javascript: void(0);">Konsult</a></li>
+              <li class="breadcrumb-item">Profile</li>
+              <li class="breadcrumb-item active">Edit Profile</li>
+            </ol>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- end page title -->
+
+
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+
+            <div class="row">
+
+              <div class="col-md-12 col-lg-6 col-xl-6">
+
+                <h1 class="text-left head-small">Profile Settings</h1>
+
+
+                <form>
+
+
+
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label for="basicpill-phoneno-input" class="label-100">First Name</label>
+                        <input class="form-control input-field" value="Sean ">
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label for="basicpill-phoneno-input" class="label-100">Last Name</label>
+                        <input class="form-control input-field" value="Williams ">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label for="basicpill-phoneno-input" class="label-100">Profession</label>
+                        <input class="form-control input-field" value="Public Speaker, Author & Career Coach ">
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label for="basicpill-phoneno-input" class="label-100">Address</label>
+                        <input class="form-control input-field" value="Massachusetts, United States">
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="row">
+                    <div class="col-lg-12 mx-auto mb-20">
+                      <label for="basicpill-phoneno-input" class="label-100">Upoad Banner Image / Video</label>
+                      <div class="input-group mb-3 px-2 py-1 bg-white file-upload-bdr">
+                        <input id="upload" type="file" onchange="readURL(this);" class="form-control">
+                        <label id="upload-label" for="upload" class="font-weight-light text-muted"></label>
+                        <div class="input-group-append">
+                          <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Upoad Banner Image / Video</small></label>
+                        </div>
+                      </div>
+
+                      <p class="error font-size-12">Please use image with size less than 3 MB and dimensions (1920 x 600 Pixels)</p>
+                      <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+
+                    </div>
+                  </div>
+
+
+
+
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label for="basicpill-phoneno-input" class="label-100">Asking Question Price</label>
+                        <select name="currency" value="" class="form-control  input-field">
+                          <option value="">--select--</option>
+                          <option value="USD">9 USD</option>
+                          <option value="USD">19 USD</option>
+                          <option value="AED">29 USD</option>
+                          <option value="AUD">39 USD</option>
+                          <option value="USD">49 USD</option>
+                          <option value="AED">59 USD</option>
+                          <option value="AUD">69 USD</option>
+                          <option value="AED">79 USD</option>
+                          <option value="AUD">89 USD</option>
+                          <option value="AUD">99 USD</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-lg-12">
+
+
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="form-group">
+                            <label for="basicpill-phoneno-input" class="label-100">
+                              About Me
+                            </label>
+                            <div id="summernote-editor" class="summernote">
+                              <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+
+                              </p>
+                              <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+
+                              </p>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-lg-12">
+
+
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="form-group">
+                            <label for="basicpill-phoneno-input" class="label-100">
+                              Services offered by me
+                            </label>
+                            <div id="summernote-editor2" class="summernote">
+                              <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+                              </p>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+
+
+
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group text-left">
+
+                        <a routerLink="/profile">
+                          <button type="button" class="btn btn-success btn-login waves-effect waves-light mr-3">Update</button>
+                        </a>
+
+
+                      </div>
+                    </div>
+                  </div>
+
+
+                </form>
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div> <!-- container-fluid -->
+</div>
+<!-- End Page-content -->
+
+
+
+<script>
+console.log('this inline script is running')
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imageResult')
+                .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$(function () {
+    $('#upload').on('change', function () {
+        readURL(input);
+    });
+});
+
+/*  ==========================================
+    SHOW UPLOADED IMAGE NAME
+* ========================================== */
+var input = document.getElementById( 'upload' );
+var infoArea = document.getElementById( 'upload-label' );
+
+input.addEventListener( 'change', showFileName );
+function showFileName( event ) {
+  var input = event.srcElement;
+  var fileName = input.files[0].name;
+  infoArea.textContent = 'File name: ' + fileName;
+}
+</script>

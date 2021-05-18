@@ -1,0 +1,446 @@
+<!-- Website Modal -->
+<div class="modal fade" id="website" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add / Edit Website</h5>
+        <button type="button" class="close close-b" data-dismiss="modal" aria-label="Close">
+          <span>x</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group mt-20 mb-20">
+          <label for="basicpill-phoneno-input" class="label-100">
+            Add or Edit Website Url
+          </label>
+          <input class="form-control input-field" #websiteInput>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary save-btn" (click)="onSaveLink('website')" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Facebook Modal -->
+<div class="modal fade" id="facebook" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add / Edit Facebook </h5>
+        <button type="button" class="close close-b" data-dismiss="modal" aria-label="Close">
+          <span>x</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group mt-20 mb-20">
+          <label for="basicpill-phoneno-input" class="label-100">
+            Add or Edit Facebook Url
+          </label>
+          <input class="form-control input-field" #facebookInput>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary save-btn" (click)="onSaveLink('facebook')" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Linkedin Modal -->
+<div class="modal fade" id="linkedin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add / Edit Linkedin </h5>
+        <button type="button" class="close close-b" data-dismiss="modal" aria-label="Close">
+          <span>x</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group mt-20 mb-20">
+          <label for="basicpill-phoneno-input" class="label-100">
+            Add or Edit Linkedin Url
+          </label>
+          <input class="form-control input-field" #linkedinInput>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary save-btn" (click)="onSaveLink('linkedin')" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Twitter Modal -->
+<div class="modal fade" id="twitter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add / Edit Twitter </h5>
+        <button type="button" class="close close-b" data-dismiss="modal" aria-label="Close">
+          <span>x</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group mt-20 mb-20">
+          <label for="basicpill-phoneno-input" class="label-100">
+            Add or Edit Twitter Url
+          </label>
+          <input class="form-control input-field" #twitterInput>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary save-btn" (click)="onSaveLink('twitter')" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ImageUpload Modal -->
+<div class="modal fade" id="addprofileimg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #imageUploadModal>
+  <div class="modal-dialog">
+    <div class="modal-content popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Profile Image </h5>
+        <button type="button" class="close close-b" data-dismiss="modal" aria-label="Close">
+          <span>x</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12 mx-auto">
+            <div class="input-group mb-3 px-2 py-1 bg-white file-upload-bdr">
+              <input
+                id="upload"
+                type="file"
+                class="form-control"
+                (change)="handleInputChange($event)"
+                accept="image/*">
+              <label id="upload-label" for="upload" class="font-weight-light text-muted">Add Profile Image</label>
+              <div class="input-group-append">
+                <label for="upload" class="btn btn-light m-0 rounded-pill px-4">
+                <i class="fa fa-cloud-upload mr-2 text-muted"></i>
+                <small class="text-uppercase font-weight-bold text-muted">Choose Image</small></label>
+              </div>
+            </div>
+            <p class="error font-size-12">Please use image with size less than 3 MB and dimensions 1x1 ratio (200 x 200 Pixels)</p>
+            <div class="image-area mt-4"><img id="imageResult" [src]="imageSrc" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary save-btn" (click)="onSaveImage()" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Image Modal -->
+<div class="modal fade" id="addimg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Image / Video </h5>
+        <button type="button" class="close close-b" data-dismiss="modal" aria-label="Close">
+          <span>x</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12 mx-auto">
+            <div class="input-group mb-3 px-2 py-1 bg-white file-upload-bdr">
+              <input
+                 id="upload"
+                 type="file"
+                 class="form-control"
+                 (change)="handleInputChange($event)"
+                 accept="image/*">
+              <label id="upload-label" for="upload" class="font-weight-light text-muted">Featured Image</label>
+              <div class="input-group-append">
+                <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose Image</small></label>
+              </div>
+            </div>
+            <p class="error font-size-12">Please use image with size less than 3 MB and dimensions 4x3 ratio (450 x 320 Pixels)</p>
+            <div class="image-area mt-4"><img id="imageResult" [src]="imageSrc" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary save-btn" data-dismiss="modal" (click)="onAddFeatured()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Update Image Modal -->
+<div class="modal fade" id="editimg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Image / Video </h5>
+        <button type="button" class="close close-b" data-dismiss="modal" aria-label="Close">
+          <span>x</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12 mx-auto">
+            <div class="input-group mb-3 px-2 py-1 bg-white file-upload-bdr">
+              <input
+                id="upload"
+                type="file"
+                class="form-control"
+                (change)="handleInputChange($event)"
+                accept="image/*">
+              <label id="upload-label" for="upload" class="font-weight-light text-muted">Featured Image</label>
+              <div class="input-group-append">
+                <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose Image</small></label>
+              </div>
+            </div>
+            <p class="error font-size-12">Please use image with size less than 3 MB and dimensions 4x3 ratio (450 x 320 Pixels)</p>
+            <div class="image-area mt-4"><img id="imageResult" [src]="imageSrc" alt="" class="img-fluid rounded shadow-sm mx-auto d-block">
+              <!-- <img src="assets/images/4-3-ratio.png" class="img-fluid"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary save-btn" data-dismiss="modal" (click)="onUpdateFeatured()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+      <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+          <h4 class="mb-0">Profile</h4>
+
+          <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+              <li class="breadcrumb-item"><a href="javascript: void(0);">Mantur</a></li>
+              <li class="breadcrumb-item active">Profile</li>
+            </ol>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+
+            <!-- Begin Table 1 -->
+            <div class="profile-area">
+
+              <div class="form-group text-right">
+                <a (click)="onEditProfile()">
+                  <button type="button" class="btn btn-profile waves-effect waves-light">
+                    Edit Profile
+                  </button>
+                </a>
+              </div>
+
+              <div class="profile-banner"
+                   [ngStyle]="{'background': 'url(' + member.bannerImage + ') top center no-repeat', 'background-size': 'cover'}">
+
+                <div class="media profile-konsult">
+                  <div class="mr-4">
+                    <img src="{{ member.picture }}" alt="" class="avatar-profile">
+                    <span class="profile-img-upload" data-toggle="modal" data-target="#addprofileimg" (click)="onOpenModal()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                  </div>
+                  <div class="media-body align-self-center overflow-hidden">
+                    <div>
+                      <h5 class="text-truncate">{{ member.firstName }} {{ member.lastName }}</h5>
+                      <p class="data">{{ member.profession }}</p>
+                      <p class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ member.location }}</p>
+                      <p class="rating">
+                        <i class="fa fa-star active mr-1" *ngFor="let obj of ratingArray"></i>
+                        <i class="fa fa-star mr-1" *ngFor="let obj of nonRatingArray"></i> {{ member.reviewsCount }} total reviews
+                      </p>
+                      <div class="form-group text-left m-0">
+                        <a>
+                          <button type="button" class="btn btn-profile waves-effect waves-light">
+                            Ask a question for {{ member.settings.currency }} {{ member.fees }}
+                          </button>
+                        </a>
+                      </div>
+                      <p class="mt-3 user-profile"><i class="fa fa-user-circle" aria-hidden="true"></i>  {{ member.publicURL }}</p>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="profile-data">
+                <h4>About me</h4>
+
+                <!-- <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+                </p>
+
+                <p> All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+                </p> -->
+
+                <p>{{ member.about }}</p>
+
+              </div>
+
+              <div class="profile-data">
+                <h4>Services offered by me</h4>
+
+                <!-- <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+                </p> -->
+                <p>{{ member.services }}</p>
+
+              </div>
+
+
+              <div class="profile-data">
+                <h4>Featured images and Videos</h4>
+
+                <div class="row mt-2">
+
+                  <div class="col-md-3" *ngFor="let obj of member.featured; let i = index">
+                    <div class="profile-video-image-box">
+                      <img class="img-fluid" alt="200x200" [src]="obj.data">
+                      <span class="img-delete" (click)="onDeleteFeatured(i)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                      <span class="img-edit"  data-toggle="modal" data-target="#editimg" (click)="onEditFeaturedImage(i)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3" *ngIf="member.featured.length < 4">
+                    <div class="user-upload"  data-toggle="modal" data-target="#addimg" (click)="onOpenModal()">
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                    </div>
+                  </div>
+
+                </div>
+
+
+              </div>
+
+
+              <div class="profile-data">
+
+                <div class="row">
+
+                  <div class="col-md-3">
+                    <div class="social-link"  data-toggle="modal" data-target="#website" [ngStyle]=" { 'color': member.socials && member.socials.website ? '#002266' : ''}">
+                      <i class="fa fa-globe" aria-hidden="true"></i><br>
+                      {{ member.socials ? member.socials.website ? 'Edit': 'Add' : 'Add' }} Website
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="social-link"  data-toggle="modal" data-target="#facebook" [ngStyle]=" { 'color': member.socials && member.socials.facebook ? '#4267B2' : ''}">
+                      <i class="fa fa-facebook-square" aria-hidden="true"></i><br>
+                      {{ member.socials ? member.socials.facebook ? 'Edit': 'Add' : 'Add' }} Facebook
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="social-link"  data-toggle="modal" data-target="#linkedin" [ngStyle]=" { 'color': member.socials && member.socials.linkedin ? '#0077b5' : ''}">
+                      <i class="fa fa-linkedin-square" aria-hidden="true"></i><br>
+                      {{ member.socials ? member.socials.linkedin ? 'Edit': 'Add' : 'Add' }} Linkedin
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="social-link"  data-toggle="modal" data-target="#twitter" [ngStyle]=" { 'color': member.socials && member.socials.twitter ? '#00ACEE' : ''}">
+                      <i class="fa fa-twitter-square" aria-hidden="true"></i><br>
+                      {{ member.socials ? member.socials.twitter ? 'Edit': 'Add' : 'Add' }} Twitter
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- REVIEWS -->
+
+              <!-- <div class="profile-data">
+                <h4>67 Reviews</h4>
+                <div class="row">
+
+                  <div class="media border-bottom-media py-4">
+                    <img class="mr-2 rounded-circle avatar-xs" src="assets/images/avatar-2.jpg" alt="">
+                    <div class="media-body">
+                      <h5 class="mt-0 mb-1">Marion Walker <small class="text-muted float-right">1 hr ago</small></h5>
+                      <p class="ratings">
+                        <i class="fa fa-star active mr-1"></i>
+                        <i class="fa fa-star active mr-1"></i>
+                        <i class="fa fa-star active mr-1"></i>
+                        <i class="fa fa-star active mr-1"></i>
+                        <i class="fa fa-star mr-1"></i>
+                      </p>
+                      <p class="text-muted">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+
+                      </p>
+
+                      <a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i class="mdi mdi-reply"></i> Reply</a>
+                    </div>
+                  </div>
+
+                  <div class="media border-bottom-media py-4">
+                    <img class="mr-2 rounded-circle avatar-xs" src="assets/images/avatar-2.jpg" alt="">
+                    <div class="media-body">
+                      <h5 class="mt-0 mb-1">Marion Walker <small class="text-muted float-right">1 hr ago</small></h5>
+                      <p class="ratings">
+                        <i class="fa fa-star active mr-1"></i>
+                        <i class="fa fa-star active mr-1"></i>
+                        <i class="fa fa-star active mr-1"></i>
+                        <i class="fa fa-star active mr-1"></i>
+                        <i class="fa fa-star mr-1"></i>
+                      </p>
+                      <p class="text-muted">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+
+                      </p>
+
+                      <a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i class="mdi mdi-reply"></i> Reply</a>
+                    </div>
+                  </div>
+
+
+
+                  <div class="media py-4 col-md-12 py-3">
+                    <div class="row  col-md-12 p-0">
+                      <div class="col-md-12 ">
+                        <textarea id="textarea" class="form-control" maxlength="225" rows="4" placeholder='This textarea has a limit of 225 chars'></textarea>
+                      </div>
+
+                      <div class="col-md-12 mt-3">
+                        <button type="submit" class="btn btn-primary w-md">Post Review</button>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+
+              </div> -->
+
+            </div>
+            <!--End of Table 1 -->
+
+            <!-- end table-responsive -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div> <!-- container-fluid -->
+</div>
+<!-- End Page-content -->

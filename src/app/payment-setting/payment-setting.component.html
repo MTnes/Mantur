@@ -1,0 +1,290 @@
+<div class="modal fade" id="razorpay" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content popup-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Connect your Bank Account Details</h5>
+        <button type="button" class="close close-b" data-dismiss="modal" aria-label="Close">
+          <span>x</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="form-group mb-15">
+              <label for="basicpill-phoneno-input" class="label-100">Full Name</label>
+              <input class="form-control input-field">
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group mb-15">
+              <label for="basicpill-phoneno-input" class="label-100">Email</label>
+              <input class="form-control input-field">
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group mb-15">
+              <label for="basicpill-phoneno-input" class="label-100">Select your Business Type</label>
+
+              <select name="currency" value="" class="form-control  input-field">
+                <option value="">--select--</option>
+                <option value="" selected="">Individual</option>
+
+              </select>
+
+
+
+
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <h2 class="account-details">Account Details</h2>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group mb-15">
+              <label for="basicpill-phoneno-input" class="label-100">Name of the Account Holder</label>
+              <input class="form-control input-field">
+            </div>
+
+          </div>
+
+          <div class="col-lg-12">
+            <div class="form-group mb-15">
+              <label for="basicpill-phoneno-input" class="label-100">ISFC Code</label>
+              <input class="form-control input-field">
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="form-group mb-15">
+              <label for="basicpill-phoneno-input" class="label-100">Account Number</label>
+              <input class="form-control input-field">
+            </div>
+
+          </div>
+
+
+
+          <div class="col-lg-12">
+
+            <div class="form-group mb-15">
+              <label for="basicpill-phoneno-input" class="label-100">Select your account type</label>
+              <select name="currency" value="" class="form-control  input-field">
+                <option value="">--select--</option>
+                <option value="" selected="">Savings</option>
+
+              </select>
+
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary save-btn">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="layout-wrapper">
+  <app-header></app-header>
+  <app-navbar></app-navbar>
+
+  <div class="main-content">
+    <!-- Page content starts -->
+    <div class="page-content">
+      <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+          <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+              <h4 class="mb-0">Payment Settings</h4>
+
+              <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                  <li class="breadcrumb-item"><a href="javascript: void(0);">Konsult</a></li>
+                  <li class="breadcrumb-item active">Payment Settings</li>
+                </ol>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12 col-lg-6 col-xl-6">
+
+                    <h1 class="text-left head-small">Payment Settings</h1>
+                    <form>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="form-group">
+                            <label for="basicpill-phoneno-input" class="label-100">
+                              Choose your Country
+                            </label>
+                            <select name="currency" value="" class="form-control  input-field">
+                              <option value="">--select--</option>
+                              <option value="INR" selected>India</option>
+                              <option value="USD">United States of America</option>
+                              <option value="AED">Argentina</option>
+                              <option value="AUD">United Kingdon</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="form-group">
+                            <label for="basicpill-phoneno-input" class="label-100">
+                              Select the currency in which you would like to accept your payments
+                            </label>
+                            <select name="currency" value="" class="form-control  input-field">
+                              <option value="">--select--</option>
+                              <option value="INR" selected>INR</option>
+                              <option value="USD">USD</option>
+                              <option value="AED">AED</option>
+                              <option value="AUD">AUD</option>
+                              <option value="CAD">CAD</option>
+                              <option value="EUR">EUR</option>
+                              <option value="GBP">GBP</option>
+                              <option value="HKD">HKD</option>
+                              <option value="INR">INR</option>
+                              <option value="JPY">JPY</option>
+                              <option value="SGD">SGD</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="form-group text-left">
+                            <a href="index.html">
+                              <button type="button" class="btn btn-success btn-login waves-effect waves-light mr-3">Update</button>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+
+                    </form>
+
+                  </div>
+                </div>
+                <!-- end table-responsive -->
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+
+
+                <div class="row">
+
+                  <div class="col-md-12 col-lg-8 col-xl-8">
+
+                    <h1 class="text-left head-small">Payment Methods</h1>
+
+
+
+
+
+                    <div class="row">
+                      <div class="col-lg-12">
+
+                        <div class="method-row">
+                          <span class="method-icon">
+                            <img src="assets/images/icons/pay-pal-icon.png">
+                          </span>
+                          <span class="method-text">
+                            <h1>PayPal</h1>
+                            <p>Accept credit cards and PayPal balance. Paid out to your PayPal instantly.</p>
+                          </span>
+                          <span class="method-btn">
+                            <a routerLink="/konsult-paypal">
+                              <button class="btn btn-info">Enable</button>
+                            </a>
+                          </span>
+                        </div>
+
+
+                        <div class="method-row">
+                          <span class="method-icon">
+                            <img src="assets/images/icons/stripe-icon.png">
+                          </span>
+                          <span class="method-text">
+                            <h1>Stripe</h1>
+                            <p> Accept credit cards, Apple Pay and Google Pay. Paid out to your bank account. </p>
+                          </span>
+
+
+
+                          <span class="method-btn">
+
+                            <div class="dropdown">
+                              <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Enable
+                              </button>
+
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" routerLink="/konsult-stripe">I Already have a Stripe account</a>
+                                <a class="dropdown-item" routerLink="/konsult-stripe">I don't have a Stripe account</a>
+                              </div>
+
+                            </div>
+
+
+                          </span>
+                        </div>
+
+
+                        <div class="method-row">
+                          <span class="method-icon">
+                            <img src="assets/images/icons/razorpay-icon.png">
+                          </span>
+                          <span class="method-text">
+                            <h1>Razorpay
+                            </h1>
+                            <p>Accept debit / credit cards, UPI, and Netbanking, Pait out to your bank account in 4 days</p>
+                          </span>
+                          <span class="method-btn">
+                            <button   data-toggle="modal" data-target="#razorpay" class="btn btn-info">Enable</button>
+                          </span>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- end table-responsive -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- end table-responsive -->
+
+      </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+    <app-footer></app-footer>
+  </div>
+</div>
