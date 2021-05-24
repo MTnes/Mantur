@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Request } from '../../shared/models/request.model';
+import { RequestsService } from '../../shared/services/requests.service';
 
 @Component({
   selector: 'app-requests-main',
@@ -8,9 +10,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class RequestsMainComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  requests: Request[] = [];
+
+  constructor(private router: Router, private route: ActivatedRoute, private requestsService: RequestsService) { }
 
   ngOnInit(): void {
+    this.requests = this.requestsService.getRequests();
+    console.log(this.requests)
   }
 
   onViewRequest() {

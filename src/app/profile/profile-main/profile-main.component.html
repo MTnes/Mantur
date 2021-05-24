@@ -13,7 +13,7 @@
           <label for="basicpill-phoneno-input" class="label-100">
             Add or Edit Website Url
           </label>
-          <input class="form-control input-field" #websiteInput>
+          <input type="url" class="form-control input-field" (keyup.enter)="onSaveLink('website')" #websiteInput ng-model="web">
         </div>
       </div>
       <div class="modal-footer">
@@ -38,7 +38,7 @@
           <label for="basicpill-phoneno-input" class="label-100">
             Add or Edit Facebook Url
           </label>
-          <input class="form-control input-field" #facebookInput>
+          <input type="url" class="form-control input-field" #facebookInput ng-model="fb">
         </div>
       </div>
       <div class="modal-footer">
@@ -63,7 +63,7 @@
           <label for="basicpill-phoneno-input" class="label-100">
             Add or Edit Linkedin Url
           </label>
-          <input class="form-control input-field" #linkedinInput>
+          <input type="url" class="form-control input-field" #linkedinInput ng-model="lnkdn">
         </div>
       </div>
       <div class="modal-footer">
@@ -88,7 +88,7 @@
           <label for="basicpill-phoneno-input" class="label-100">
             Add or Edit Twitter Url
           </label>
-          <input class="form-control input-field" #twitterInput>
+          <input type="url" class="form-control input-field" #twitterInput ng-model="twttr">
         </div>
       </div>
       <div class="modal-footer">
@@ -265,7 +265,8 @@
                       <p class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ member.location }}</p>
                       <p class="rating">
                         <i class="fa fa-star active mr-1" *ngFor="let obj of ratingArray"></i>
-                        <i class="fa fa-star mr-1" *ngFor="let obj of nonRatingArray"></i> {{ member.reviewsCount }} total reviews
+                        <i class="fa fa-star mr-1" *ngFor="let obj of nonRatingArray"></i>
+                        <!-- {{ member.reviewsCount }} total reviews -->
                       </p>
                       <div class="form-group text-left m-0">
                         <a>
@@ -292,7 +293,7 @@
                 <p> All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
                 </p> -->
 
-                <p>{{ member.about }}</p>
+                <p [innerHTML]="member.about"></p>
 
               </div>
 
@@ -301,7 +302,7 @@
 
                 <!-- <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
                 </p> -->
-                <p>{{ member.services }}</p>
+                <p [innerHTML]="member.services"></p>
 
               </div>
 
@@ -313,7 +314,7 @@
 
                   <div class="col-md-3" *ngFor="let obj of member.featured; let i = index">
                     <div class="profile-video-image-box">
-                      <img class="img-fluid" alt="200x200" [src]="obj.data">
+                      <img class="img-fluid" alt="200x200" [src]="obj">
                       <span class="img-delete" (click)="onDeleteFeatured(i)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
                       <span class="img-edit"  data-toggle="modal" data-target="#editimg" (click)="onEditFeaturedImage(i)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
                     </div>
@@ -336,30 +337,30 @@
                 <div class="row">
 
                   <div class="col-md-3">
-                    <div class="social-link"  data-toggle="modal" data-target="#website" [ngStyle]=" { 'color': member.socials && member.socials.website ? '#002266' : ''}">
+                    <div class="social-link"  data-toggle="modal" data-target="#website" [ngStyle]=" { 'color': member.websiteLink ? '#002266' : ''}">
                       <i class="fa fa-globe" aria-hidden="true"></i><br>
-                      {{ member.socials ? member.socials.website ? 'Edit': 'Add' : 'Add' }} Website
+                      {{ member.websiteLink ? 'Edit': 'Add' }} Website
                     </div>
                   </div>
 
                   <div class="col-md-3">
-                    <div class="social-link"  data-toggle="modal" data-target="#facebook" [ngStyle]=" { 'color': member.socials && member.socials.facebook ? '#4267B2' : ''}">
+                    <div class="social-link"  data-toggle="modal" data-target="#facebook" [ngStyle]=" { 'color': member.facebookLink ? '#4267B2' : ''}">
                       <i class="fa fa-facebook-square" aria-hidden="true"></i><br>
-                      {{ member.socials ? member.socials.facebook ? 'Edit': 'Add' : 'Add' }} Facebook
+                      {{ member.facebookLink ? 'Edit': 'Add' }} Facebook
                     </div>
                   </div>
 
                   <div class="col-md-3">
-                    <div class="social-link"  data-toggle="modal" data-target="#linkedin" [ngStyle]=" { 'color': member.socials && member.socials.linkedin ? '#0077b5' : ''}">
+                    <div class="social-link"  data-toggle="modal" data-target="#linkedin" [ngStyle]=" { 'color': member.linkedinLink ? '#0077b5' : ''}">
                       <i class="fa fa-linkedin-square" aria-hidden="true"></i><br>
-                      {{ member.socials ? member.socials.linkedin ? 'Edit': 'Add' : 'Add' }} Linkedin
+                      {{ member.linkedinLink ? 'Edit': 'Add' }} Linkedin
                     </div>
                   </div>
 
                   <div class="col-md-3">
-                    <div class="social-link"  data-toggle="modal" data-target="#twitter" [ngStyle]=" { 'color': member.socials && member.socials.twitter ? '#00ACEE' : ''}">
+                    <div class="social-link"  data-toggle="modal" data-target="#twitter" [ngStyle]=" { 'color': member.twitterLink ? '#00ACEE' : ''}">
                       <i class="fa fa-twitter-square" aria-hidden="true"></i><br>
-                      {{ member.socials ? member.socials.twitter ? 'Edit': 'Add' : 'Add' }} Twitter
+                      {{ member.twitterLink ? 'Edit': 'Add' }} Twitter
                     </div>
                   </div>
 

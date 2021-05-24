@@ -7,87 +7,87 @@
           <span>x</span>
         </button>
       </div>
-      <div class="modal-body">
 
+      <form [formGroup]="razorPayForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
 
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="form-group mb-15">
-              <label for="basicpill-phoneno-input" class="label-100">Full Name</label>
-              <input class="form-control input-field">
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="form-group mb-15">
-              <label for="basicpill-phoneno-input" class="label-100">Email</label>
-              <input class="form-control input-field">
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="form-group mb-15">
-              <label for="basicpill-phoneno-input" class="label-100">Select your Business Type</label>
+          <div class="row">
 
-              <select name="currency" value="" class="form-control  input-field">
-                <option value="">--select--</option>
-                <option value="" selected="">Individual</option>
-
-              </select>
-
-
-
-
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <h2 class="account-details">Account Details</h2>
-          </div>
-          <div class="col-lg-12">
-            <div class="form-group mb-15">
-              <label for="basicpill-phoneno-input" class="label-100">Name of the Account Holder</label>
-              <input class="form-control input-field">
+            <div class="col-lg-12">
+              <div class="form-group mb-15">
+                <label for="basicpill-phoneno-input" class="label-100">Full Name</label>
+                <input class="form-control input-field" formControlName="fullName">
+                <span class="help-block" style="color: red" *ngIf="fullName.invalid && ( fullName.dirty || fullName.touched )">This field is required</span>
+              </div>
             </div>
 
-          </div>
-
-          <div class="col-lg-12">
-            <div class="form-group mb-15">
-              <label for="basicpill-phoneno-input" class="label-100">ISFC Code</label>
-              <input class="form-control input-field">
-            </div>
-          </div>
-
-          <div class="col-lg-12">
-            <div class="form-group mb-15">
-              <label for="basicpill-phoneno-input" class="label-100">Account Number</label>
-              <input class="form-control input-field">
+            <div class="col-lg-12">
+              <div class="form-group mb-15">
+                <label for="basicpill-phoneno-input" class="label-100">Email</label>
+                <input class="form-control input-field" formControlName="email">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                  <span class="help-block" *ngIf="email.errors?.required" style="color: red">This field is required</span>
+                  <span class="help-block" *ngIf="email.errors?.email" style="color: red">Entered email is not valid</span>
+                </div>
+              </div>
             </div>
 
-          </div>
+            <div class="col-lg-12">
+              <div class="form-group mb-15">
+                <label for="basicpill-phoneno-input" class="label-100">Select your Business Type</label>
+                <select name="currency" value="" class="form-control  input-field" formControlName="businessType">
+                  <option value="Individual" selected>Individual</option>
+                </select>
+              </div>
+            </div>
 
+            <div class="col-lg-12">
+              <h2 class="account-details">Account Details</h2>
+            </div>
 
+            <div formGroupName="accountDetails">
+              <div class="col-lg-12">
+                <div class="form-group mb-15">
+                  <label for="basicpill-phoneno-input" class="label-100">Name of the Account Holder</label>
+                  <input class="form-control input-field" formControlName="name">
+                  <span class="help-block" style="color: red" *ngIf="name.invalid && ( name.dirty || name.touched )">This field is required</span>
+                </div>
+              </div>
 
-          <div class="col-lg-12">
+              <div class="col-lg-12">
+                <div class="form-group mb-15">
+                  <label for="basicpill-phoneno-input" class="label-100">ISFC Code</label>
+                  <input class="form-control input-field" formControlName="ifsc">
+                  <span class="help-block" style="color: red" *ngIf="ifsc.invalid && ( ifsc.dirty || ifsc.touched )">This field is required</span>
+                </div>
+              </div>
 
-            <div class="form-group mb-15">
-              <label for="basicpill-phoneno-input" class="label-100">Select your account type</label>
-              <select name="currency" value="" class="form-control  input-field">
-                <option value="">--select--</option>
-                <option value="" selected="">Savings</option>
+              <div class="col-lg-12">
+                <div class="form-group mb-15">
+                  <label for="basicpill-phoneno-input" class="label-100">Account Number</label>
+                  <input class="form-control input-field" formControlName="accountNumber">
+                  <span class="help-block" style="color: red" *ngIf="accountNumber.invalid && ( accountNumber.dirty || accountNumber.touched )">This field is required</span>
+                </div>
+              </div>
 
-              </select>
-
+              <div class="col-lg-12">
+                <div class="form-group mb-15">
+                  <label for="basicpill-phoneno-input" class="label-100">Select your account type</label>
+                  <select name="currency" class="form-control input-field" formControlName="accountType">
+                    <option selected hidden>--select--</option>
+                    <option value="Savings">Savings</option>
+                  </select>
+                </div>
+              </div>
             </div>
 
           </div>
         </div>
-
-
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary save-btn">Submit</button>
-      </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary save-btn" [disabled]="!razorPayForm.valid">Submit</button>
+          <span class="help-block" style="color: red" *ngIf="razorPayForm.invalid && ( razorPayForm.dirty || razorPayForm.touched )">Form is invalid !!</span>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -127,19 +127,19 @@
                   <div class="col-md-12 col-lg-6 col-xl-6">
 
                     <h1 class="text-left head-small">Payment Settings</h1>
-                    <form>
+                    <form [formGroup]="settingsForm" (ngSubmit)="onSettingsSubmit()">
                       <div class="row">
                         <div class="col-lg-12">
                           <div class="form-group">
                             <label for="basicpill-phoneno-input" class="label-100">
                               Choose your Country
                             </label>
-                            <select name="currency" value="" class="form-control  input-field">
+                            <select name="currency" value="" class="form-control input-field" formControlName="country">
                               <option value="">--select--</option>
-                              <option value="INR" selected>India</option>
-                              <option value="USD">United States of America</option>
-                              <option value="AED">Argentina</option>
-                              <option value="AUD">United Kingdon</option>
+                              <option value="India" selected>India</option>
+                              <option value="United States of America">United States of America</option>
+                              <option value="Argentina">Argentina</option>
+                              <option value="United Kingdom">United Kingdom</option>
                             </select>
                           </div>
                         </div>
@@ -151,7 +151,7 @@
                             <label for="basicpill-phoneno-input" class="label-100">
                               Select the currency in which you would like to accept your payments
                             </label>
-                            <select name="currency" value="" class="form-control  input-field">
+                            <select name="currency" value="" class="form-control input-field" formControlName="currency">
                               <option value="">--select--</option>
                               <option value="INR" selected>INR</option>
                               <option value="USD">USD</option>
@@ -173,7 +173,7 @@
                         <div class="col-lg-12">
                           <div class="form-group text-left">
                             <a href="index.html">
-                              <button type="button" class="btn btn-success btn-login waves-effect waves-light mr-3">Update</button>
+                              <button type="submit" class="btn btn-success btn-login waves-effect waves-light mr-3">Update</button>
                             </a>
                           </div>
                         </div>

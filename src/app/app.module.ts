@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { NgxSummernoteModule } from 'ngx-summernote';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -34,6 +36,8 @@ import { LoginComponent } from './login/login.component';
 
 // Services
 import { MemberProfileService } from './shared/services/member-profile.service';
+import { MemberCommService } from './shared/services/member-communication.service';
+import { RequestsService } from './shared/services/requests.service';
 
 @NgModule({
   declarations: [
@@ -64,9 +68,10 @@ import { MemberProfileService } from './shared/services/member-profile.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSummernoteModule
   ],
-  providers: [MemberProfileService],
+  providers: [MemberProfileService, MemberCommService, RequestsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

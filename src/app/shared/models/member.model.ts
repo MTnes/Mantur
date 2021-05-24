@@ -7,18 +7,18 @@ export class Member {
   public location: string;
   public rating: number = 0;
   public profession: string;
-  public publicURL: string;
-  public featured: {type: string, data: string}[] = [];
-  public socials: {
-    website: string,
-    facebook: string,
-    linkedin: string,
-    twitter: string
-  };
+  public publicURL: string = "";
+  public featured: string[] = [];
+
+  public websiteLink: string;
+  public facebookLink: string;
+  public linkedinLink: string;
+  public twitterLink: string;
+
   public totalEarnings: number = 0;
   public views: number = 0;
   public reviewsCount: number = 0;
-  public fees: number = 0;
+  public fees: number;
 
   public settings: {
     country: string,

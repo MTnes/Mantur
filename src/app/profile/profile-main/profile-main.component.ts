@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Member } from '../../shared/models/member.model';
 import { MemberProfileService } from '../../shared/services/member-profile.service';
 
+import { MemberCommService } from '../../shared/services/member-communication.service';
+
 @Component({
   selector: 'app-profile-main',
   templateUrl: './profile-main.component.html',
@@ -14,6 +16,8 @@ export class ProfileMainComponent implements OnInit {
   ratingArray: number[] = [];
   nonRatingArray: number[] = [];
 
+  isRefereshed = false;
+
   @ViewChild('websiteInput') websiteInput;
   @ViewChild('facebookInput') facebookInput;
   @ViewChild('linkedinInput') linkedinInput;
@@ -23,25 +27,34 @@ export class ProfileMainComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private memberService: MemberProfileService) { }
+              private memberService: MemberProfileService, private memberComm: MemberCommService) { }
 
   imageSrc: string = "";
-  featuredUploadSrc: string = "";
-  featuredUpdateSrc: string = "";
 
   ngOnInit(): void {
+
+  if (!localStorage.getItem('foo')) {
+    localStorage.setItem('foo', 'no reload')
+    location.reload()
+  } else {
+    localStorage.removeItem('foo')
+  }
+
+    // if(!this.memberComm.isFetched) {
+    //   this.memberComm.fetchMember();
+    // }
+
     this.member = this.memberService.member;
-    if(this.member.socials) {
-      if(this.member.socials.website) {
-        this.websiteInput.nativeElement.value = this.member.socials.website
-      } if(this.member.socials.facebook) {
-        this.facebookInput.nativeElement.value = this.member.socials.facebook
-      } if(this.member.socials.linkedin) {
-        this.linkedinInput.nativeElement.value = this.member.socials.linkedin
-      } if(this.member.socials.twitter) {
-        this.twitterInput.nativeElement.value = this.member.socials.twitter
-      }
-    }
+
+    // if(this.member.websiteLink) {
+    //   this.websiteInput.nativeElement.value = this.member.websiteLink
+    // } if(this.member.facebookLink) {
+    //   this.facebookInput.nativeElement.value = this.member.facebookLink
+    // } if(this.member.linkedinLink) {
+    //   this.linkedinInput.nativeElement.value = this.member.linkedinLink
+    // } if(this.member.twitterLink) {
+    //   this.twitterInput.nativeElement.value = this.member.twitterLink
+    // }
 
     for(var i = 1 ; i <= 5 ; i++) {
       if(i <= this.member.rating) {
@@ -62,23 +75,20 @@ export class ProfileMainComponent implements OnInit {
             this.nonRatingArray.push(i+1);
           }
         }
-        if(this.member.socials) {
-          if(this.member.socials.website) {
-            this.websiteInput.nativeElement.value = this.member.socials.website
-          } if(this.member.socials.facebook) {
-            this.facebookInput.nativeElement.value = this.member.socials.facebook
-          } if(this.member.socials.linkedin) {
-            this.linkedinInput.nativeElement.value = this.member.socials.linkedin
-          } if(this.member.socials.twitter) {
-            this.twitterInput.nativeElement.value = this.member.socials.twitter
-          }
+
+        if(this.member.websiteLink) {
+          this.websiteInput.nativeElement.value = this.member.websiteLink
+        } if(this.member.facebookLink) {
+          this.facebookInput.nativeElement.value = this.member.facebookLink
+        } if(this.member.linkedinLink) {
+          this.linkedinInput.nativeElement.value = this.member.linkedinLink
+        } if(this.member.twitterLink) {
+          this.twitterInput.nativeElement.value = this.member.twitterLink
         }
       }
     );
-    console.log(this.member)
 
   }
-
 
   // Functions to handle image input change
   handleInputChange(e) {
@@ -105,12 +115,16 @@ export class ProfileMainComponent implements OnInit {
   onSaveLink(type: string) {
     if(type === 'website') {
       this.memberService.updateSocial('website',this.websiteInput.nativeElement.value);
+      this.memberComm.updateSocialLinks(type,this.websiteInput.nativeElement.value).subscribe();
     } else if(type === 'facebook') {
       this.memberService.updateSocial('facebook',this.facebookInput.nativeElement.value);
+      this.memberComm.updateSocialLinks(type,this.facebookInput.nativeElement.value).subscribe();
     } else if(type === 'linkedin') {
       this.memberService.updateSocial('linkedin',this.linkedinInput.nativeElement.value);
+      this.memberComm.updateSocialLinks(type,this.linkedinInput.nativeElement.value).subscribe();
     } else if(type === 'twitter') {
       this.memberService.updateSocial('twitter',this.twitterInput.nativeElement.value);
+      this.memberComm.updateSocialLinks(type,this.twitterInput.nativeElement.value).subscribe();
     }
   }
 
@@ -119,26 +133,32 @@ export class ProfileMainComponent implements OnInit {
       this.member.picture = this.imageSrc;
       this.imageSrc = "";
     }
+    this.memberComm.updateProfilePic(this.member.picture).subscribe();
   }
 
   onAddFeatured() {
     if(this.imageSrc) {
-      this.memberService.addFeatured({ 'type': 'image', 'data': this.imageSrc });
+      this.memberService.addFeatured(this.imageSrc);
+      this.imageSrc = "";
     }
+    this.memberComm.updateFeatured(this.memberService.getMember().featured).subscribe();
   }
 
   onEditFeaturedImage(index: number) {
     this.current_index = index;
-    this.imageSrc = this.member.featured[index].data;
+    this.imageSrc = this.member.featured[index];
   }
 
   onDeleteFeatured(index: number) {
     this.memberService.deleteFeatured(index);
+    this.memberComm.updateFeatured(this.memberService.getMember().featured).subscribe();
   }
 
   onUpdateFeatured() {
-    if(this.imageSrc != this.member.featured[this.current_index].data) {
+    if(this.imageSrc != this.member.featured[this.current_index]) {
       this.memberService.editFeatured(this.current_index, this.imageSrc);
+      this.imageSrc = "";
+      this.memberComm.updateFeatured(this.memberService.getMember().featured).subscribe();
     }
   }
 
