@@ -61,8 +61,8 @@
                       <div class="media-body align-self-center overflow-hidden">
                         <div class="text-left">
 
-                          <h4 class="text-truncate">Reviwes</h4>
-                          <h1>84521</h1>
+                          <h4 class="text-truncate">Pending Requests</h4>
+                          <h1>{{ pendingRequests }}</h1>
                         </div>
                       </div>
                     </div>
@@ -96,7 +96,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 mb-30">
+            <div class="col-lg-4 mb-30" *ngIf="!isProfileComplete">
               <div class="card dashboard-box">
                 <div class="card-body">
                   <div class="media">
@@ -150,6 +150,11 @@
                           Link from your social bio and descriptions
                         </h5>
                         <p>Keep your BMC link where your followers can find them. Most creators add it as their primary bio link on Twitter, Instagram, Linktree, Youtube description, etc.</p>
+                        <div class="form-group m-0">
+                          <a style="cursor: pointer;" routerLink="/profile">
+                            <button type="button" class="btn btn-dashboard waves-effect waves-light">Link</button>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>

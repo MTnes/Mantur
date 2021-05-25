@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Member } from '../models/member.model';
 import 'rxjs/Rx'
 import { MemberProfileService } from './member-profile.service';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class MemberCommService {
@@ -10,6 +11,7 @@ export class MemberCommService {
   baseUrl = "https://mantur-server.herokuapp.com"
   token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTRlMTdlOWEzYWM0MDAxNTUzNzNiMSIsImlhdCI6MTYyMTQxODM2NiwiZXhwIjoxNjMwMDU4MzY2fQ.4pdS8SvO7RZCww59_to-zT-fWjlUJ0zRZ7wAPv8XFkg";
   isFetched = false;
+  fullyFetched = new Subject<boolean>();
 
   constructor(private http: HttpClient, private memberService: MemberProfileService) { }
 
@@ -63,8 +65,15 @@ export class MemberCommService {
         member.settings = data.data.settings;
         member.fees = data.data.fees;
         this.isFetched = true;
+
         console.log(member)
         this.memberService.setMember(member);
+
+        if(member.picture && member.firstName && member.lastName) {
+          this.memberService.isProfileComplete = true;
+        } else this.memberService.isProfileComplete = false;
+        console.log('Now it fully fetched')
+        this.fullyFetched.next(true);
       }
     )
   }

@@ -31,6 +31,11 @@
 
               <div class="col-sm-12 col-md-6">
                 <div class="dropdown d-block">
+                  <a routerLink="../" (click)="onReopen()" *ngIf="request.status === 'Replied'">
+                    <button class="btn btn-primary waves-effect waves-light float-right ml-2">
+                      Re-open Request
+                    </button>
+                  </a>
                   <a routerLink="../">
                     <button type="button" class="btn btn-primary add-btn waves-effect waves-light float-right">
                       Back
@@ -47,25 +52,25 @@
                 <tbody>
                   <tr>
                     <td width="20%"><b>Name</b></td>
-                    <td>Aamir Khan</td>
+                    <td>{{ request.clientName }}</td>
                   </tr>
 
                   <tr>
-                    <td><b>Request Type</b></td>
-                    <td>Question</td>
+                    <td><b>Requested On</b></td>
+                    <td>{{ request.requestedOn }}</td>
                   </tr>
 
                   <tr>
                     <td><b>Request</b></td>
-                    <td>Share your feedback on my business powerpoint presentation</td>
+                    <td>{{ request.requestText }}</td>
                   </tr>
 
                   <tr>
                     <td style="vertical-align:top !important;"><b>Video</b></td>
                     <td style="vertical-align:top !important;">
                       <div class="answer-video">
-                        <video width="100%" height="100%" autoplay>
-                          <source src="assets/images/movie.mp4" type="video/mp4">
+                        <video width="100%" height="100%" controls muted>
+                          <source [src]="request.requestVideo" type="video/mp4">
                           <source src="movie.ogg" type="video/ogg">
                             Your browser does not support the video tag.
                         </video>
@@ -75,7 +80,7 @@
 
                   <tr>
                     <td><b>Attachment</b></td>
-                    <td><a href="#">View Document Name</a></td>
+                    <td><a [href]="obj.link" style="cursor: pointer;" *ngFor="let obj of request.attachments">{{ obj.fileName }}</a></td>
                   </tr>
                 </tbody>
               </table>
@@ -100,16 +105,26 @@
 
                   <tr>
                     <td width="20%" style="vertical-align:top !important;">	<h4 class="answer">My Answer</h4></td>
+                  </tr>
+
+                  <tr>
+                    <td><b>Message</b></td>
+                    <td>{{ request.answerText }}</td>
+                  </tr>
+
+                  <tr>
+                    <td style="vertical-align:top !important;"><b>Video</b></td>
                     <td style="vertical-align:top !important;">
                       <div class="answer-video">
-                        <video width="100%" height="100%" autoplay>
-                          <source src="assets/images/movie.mp4" type="video/mp4">
+                        <video #video width="100%" height="100%" controls>
+                          <!-- <source [src]="request.answerVideo" type="video/mp4">
                           <source src="movie.ogg" type="video/ogg">
-                            Your browser does not support the video tag.
+                          Your browser does not support the video tag. -->
                         </video>
                       </div>
                     </td>
                   </tr>
+
 
                 </tbody>
               </table>

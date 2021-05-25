@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Params, Router, ActivatedRoute } from '@angular/router';
+import { Request } from '../../shared/models/request.model';
+import { RequestsService } from '../../shared/services/requests.service';
+import * as RecordRTC from 'recordrtc';
 
 @Component({
   selector: 'app-view-request',
@@ -7,9 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewRequestComponent implements OnInit {
 
-  constructor() { }
+  request: Request;
+  id: number;
+  @ViewChild('video') video;
+
+  constructor(private requestsService: RequestsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    console.log(this.video)
+
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.id = +params['id'];
+        this.request = this.requestsService.getRequestByID(this.id);
+      }
+    );
+    // this.video.nativeElement.src = this.request.answerVideo;
+  }
+
+  onReopen() {
+    this.requestsService.updateStatus(this.id);
   }
 
 }

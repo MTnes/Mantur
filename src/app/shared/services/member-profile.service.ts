@@ -7,6 +7,7 @@ export class MemberProfileService {
 
   member = new Member;
   memberUpdated = new Subject<Member>();
+  isProfileComplete: boolean;
 
   constructor() {
     // this.member.firstName = 'Sean';
@@ -53,6 +54,10 @@ export class MemberProfileService {
       this.member.services = data.services;
       this.member.fees = data.fees
 
+      if(!this.member.firstName || !this.member.lastName) {
+        this.isProfileComplete = false;
+      }
+
       this.memberUpdated.next(this.member);
   }
 
@@ -63,6 +68,9 @@ export class MemberProfileService {
 
   updateProfilePic(url: string) {
     this.member.picture = url;
+    if(url == null) {
+      this.isProfileComplete = false;
+    }
     this.memberUpdated.next(this.member);
   }
 

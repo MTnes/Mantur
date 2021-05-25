@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgxSummernoteModule } from 'ngx-summernote';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -69,7 +70,8 @@ import { RequestsService } from './shared/services/requests.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSummernoteModule
+    NgxSummernoteModule,
+    NgxPaginationModule
   ],
   providers: [MemberProfileService, MemberCommService, RequestsService],
   bootstrap: [AppComponent]
