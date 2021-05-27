@@ -158,6 +158,8 @@ export class RequestsMainComponent implements OnInit, AfterViewInit {
 
   onUpload() {
     // this.recordRTC.save('video.webm');
+    let video: HTMLVideoElement = this.video.nativeElement;
+    video.muted = true;
     this.requestsService.updateStatus(this.currentIndex);
     console.log(this.requests[this.currentIndex])
   }

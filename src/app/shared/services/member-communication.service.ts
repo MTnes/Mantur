@@ -69,6 +69,16 @@ export class MemberCommService {
         console.log(member)
         this.memberService.setMember(member);
 
+        if(member.websiteLink!='' || member.facebookLink!='' || member.twitterLink!='' || member.linkedinLink!='') {
+          this.memberService.isLinksUpdated = true;
+        } else {
+          this.memberService.isLinksUpdated = false;
+        }
+
+        if(member.fees) {
+          this.memberService.isFeesUpdated = true;
+        } else this.memberService.isFeesUpdated = false;
+
         if(member.picture && member.firstName && member.lastName) {
           this.memberService.isProfileComplete = true;
         } else this.memberService.isProfileComplete = false;

@@ -8,6 +8,8 @@ export class MemberProfileService {
   member = new Member;
   memberUpdated = new Subject<Member>();
   isProfileComplete: boolean;
+  isLinksUpdated: boolean;
+  isFeesUpdated: boolean;
 
   constructor() {
     // this.member.firstName = 'Sean';
@@ -54,7 +56,11 @@ export class MemberProfileService {
       this.member.services = data.services;
       this.member.fees = data.fees
 
-      if(!this.member.firstName || !this.member.lastName) {
+      if(this.member.fees) {
+        this.isFeesUpdated = true;
+      } else this.isFeesUpdated = false;
+
+      if(!this.member.firstName || !this.member.lastName || !this.member.picture) {
         this.isProfileComplete = false;
       }
 
@@ -74,6 +80,16 @@ export class MemberProfileService {
     this.memberUpdated.next(this.member);
   }
 
+  checkLinks() {
+    if(this.member.websiteLink!='' || this.member.facebookLink!='' || this.member.twitterLink!='' || this.member.linkedinLink!='') {
+      this.isLinksUpdated = true;
+      return true;
+    } else {
+      this.isLinksUpdated = false;
+      return false;
+    }
+  }
+
   updateSocial(type: string, url: string) {
 
     if(type === 'website') {
@@ -86,6 +102,7 @@ export class MemberProfileService {
       this.member.twitterLink = url;
     }
 
+    this.isLinksUpdated = this.checkLinks();
     this.memberUpdated.next(this.member);
   }
 

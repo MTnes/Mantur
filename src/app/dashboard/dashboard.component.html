@@ -117,7 +117,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 mb-30">
+            <div class="col-lg-4 mb-30" *ngIf="!isFeesUpdated">
               <div class="card dashboard-box">
                 <div class="card-body">
                   <div class="media">
@@ -139,7 +139,7 @@
             </div>
 
 
-            <div class="col-lg-4 mb-30">
+            <div class="col-lg-4 mb-30" *ngIf="!isLinksUpdated">
               <div class="card dashboard-box">
                 <div class="card-body">
                   <div class="media">

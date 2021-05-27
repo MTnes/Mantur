@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MemberCommService } from '../shared/services/member-communication.service';
 import { MemberProfileService } from '../shared/services/member-profile.service';
@@ -15,7 +16,7 @@ export class PaymentSettingComponent implements OnInit {
 
   settings: { country: string, currency: string } = { 'country' : '', 'currency': '' };
 
-  constructor(private memberComm: MemberCommService, private memberService: MemberProfileService) { }
+  constructor(private memberComm: MemberCommService, private memberService: MemberProfileService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -59,6 +60,10 @@ export class PaymentSettingComponent implements OnInit {
         alert('Settings Updated')
       }
     );
+  }
+
+  onClickPaypal() {
+    this.router.navigate(['konsult-paypal'], {queryParams: { firstQuery: true, secondQuery: 2, thirdQuery:'manturClient' }});
   }
 
 }
