@@ -15,10 +15,7 @@ export class AppComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private memberComm: MemberCommService, private memberService: MemberProfileService) { }
 
   ngOnInit() {
-    if(!this.memberComm.isFetched) {
-      this.memberComm.fetchMember();
-    }
-    
+        
   }
 
 }

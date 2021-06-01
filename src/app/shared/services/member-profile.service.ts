@@ -72,6 +72,11 @@ export class MemberProfileService {
     this.memberUpdated.next(this.member);
   }
 
+  updateCurrency(data: string) {
+    this.member.settings.currency = data;
+    this.memberUpdated.next(this.member);
+  }
+
   updateProfilePic(url: string) {
     this.member.picture = url;
     if(url == null) {

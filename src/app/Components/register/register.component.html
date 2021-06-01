@@ -1,0 +1,401 @@
+<!-- <!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Konsult</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="" />
+    <meta content="" name="author" />
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/owl.theme.css" rel="stylesheet">
+    <link href="assets/css/konsult.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body> -->
+
+
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+
+    <header class="page-topbar">
+
+        <div class="container">
+            <div class="row m-0">
+
+                <div class="navbar-header header-top">
+                    <div class="d-flex mobile-menu">
+                        <!-- LOGO -->
+                        <div class="navbar-brand-box logo-option">
+                            <a routerLink="/" class="logo">
+                                <img src="assets/images/logo-dark.png" alt="" height="25">
+                            </a>
+                        </div>
+
+                        <button type="button"
+                            class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
+                            data-toggle="collapse" data-target="#topnav-menu-content">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+
+
+
+                    </div>
+
+
+
+                    <div class="d-flex">
+
+                        <div class="topnav no-shadow konsult-nav">
+
+                            <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+
+                                <div class="collapse navbar-collapse" id="topnav-menu-content">
+                                    <ul class="navbar-nav">
+
+
+
+                                        <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>
+                                        <li class="nav-item"><a class="nav-link" routerLink="/pricing">Pricing</a>
+                                        </li>
+                                        <li class="nav-item"><a class="nav-link" routerLink="/blog">Blog</a></li>
+                                        <li class="nav-item">
+                                            <div class="signin_signup_btns">
+                                                <a routerLink="/register" class="header-btn sign_btn">Sign Up</a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <div class="signin_signup_btns">
+                                                <a routerLink="/login" class="header-btn sign_btn">Login</a>
+                                            </div>
+                                        </li>
+
+
+
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+
+
+    <main class="main-konsult">
+
+
+
+
+        <section class="konsult-box s-pad">
+
+
+            <div class="container">
+
+                <h1 class="text-center credincials">Register</h1>
+
+                <div class="row">
+
+                    <div class="login-signup-box">
+
+                        <h6 class="text-center">Use your social account, or complete the form.</h6>
+
+                        <div class="social-align-form">
+                            <a routerLink="/register">
+                                <span class="social-icon-form fb"><i class="fa fa-facebook"
+                                        aria-hidden="true"></i></span>
+                            </a>
+                            <a routerLink="/register">
+                                <span class="social-icon-form twitter"><i class="fa fa-twitter"
+                                        aria-hidden="true"></i></span>
+                            </a>
+                            <a routerLink="/register">
+                                <span class="social-icon-form linkedin"><i class="fa fa-linkedin"
+                                        aria-hidden="true"></i></span>
+                            </a>
+                            <a routerLink="/register">
+                                <span class="social-icon-form google"><i class="fa fa-google"
+                                        aria-hidden="true"></i></span>
+                            </a>
+
+                        </div>
+
+
+                        <div class="or-line">
+                            <span>OR</span>
+                        </div>
+
+                        <form [formGroup]="registerForm">
+
+                            <!-- <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control input-field">
+                                </div> -->
+                            <div class="form-group">
+                                <label for="userpassword">First Name *</label>
+                                <input type="text" class="form-control input-field" name="firstName"
+                                    [(ngModel)]="registerData.firstName" formControlName="firstName">
+                                <div *ngIf="firstName.errors && (firstName.dirty)">
+                                    <small *ngIf="firstName.errors.required" class="errorClass">
+                                        Required
+                                    </small>
+                                    <small *ngIf="firstName.errors.pattern" class="errorClass">
+                                        Only Characters Are Allowed
+                                    </small>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="userpassword">Last Name *</label>
+                                <input type="text" class="form-control input-field" name="lastName"
+                                    [(ngModel)]="registerData.lastName" formControlName="lastName">
+                                <div *ngIf="lastName.errors && (lastName.dirty)">
+                                    <small *ngIf="lastName.errors.required" class="errorClass">
+                                        Required
+                                    </small>
+                                    <small *ngIf="lastName.errors.pattern" class="errorClass">
+                                        Only Characters Are Allowed
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="userpassword">Email *</label>
+                                <input type="text" class="form-control input-field" name="email"
+                                    [(ngModel)]="registerData.email" formControlName="email">
+                                <div *ngIf="email.errors && (email.dirty)">
+                                    <small *ngIf="email.errors.required" class="errorClass">
+                                        Required
+                                    </small>
+                                    <small *ngIf="email.errors.pattern" class="errorClass">
+                                        Email Is Not In Proper Format
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="userpassword">Password *</label>
+                                <input type="password" class="form-control input-field" name="password"
+                                    [(ngModel)]="registerData.password" formControlName="password">
+                                <div *ngIf="password.errors && (password.dirty)">
+                                    <small *ngIf="password.errors.required" class="errorClass">
+                                        Required
+                                    </small>
+                                    <small *ngIf="password.errors.pattern" class="errorClass">
+                                        Password Shoud Be 8 Characters Long, Atleast One Uppercase, Atleast One Lowercase, Atleast One Digit, Atleast One Special Character
+                                    </small>
+                                </div>
+                            </div>
+
+
+
+                            <div class="mt-3">
+                                <a routerLink="/register">
+                                    <button class="btn site-btn w-100" [disabled] = "registerForm.invalid" (click) = "registerUser()">Register</button>
+                                </a>
+                            </div>
+
+                            <div class="mt-3 text-left">
+                                <h6>Already have an account? <a routerLink="/login">Sign In</a></h6>
+                            </div>
+
+
+
+                        </form>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </section>
+
+
+
+
+
+        <footer class="foot-bg">
+
+
+            <div class="container">
+
+
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-logo mb-35">
+                            <a routerLink="/"><img src="assets/images/logo-dark.png" alt=""></a>
+                        </div>
+                        <div class="footer-tittle">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                unknown printer took.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2-5 col-md-4 col-sm-4">
+
+                        <div class="footer-tittle">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a routerLink="/">Home</a></li>
+                                <li><a routerLink="/blog">Blog</a></li>
+                                <li><a routerLink="/pricing">Pricing</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-2-5 col-md-4 col-sm-4">
+
+                        <div class="footer-tittle">
+                            <h4>Reach</h4>
+                            <ul>
+                                <li><a routerLink="/register">Contact Us</a></li>
+
+                                <li><a routerLink="/register">Terms</a></li>
+                                <li><a routerLink="/register">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
+                        <div class="footer-tittle address">
+                            <h4>Contact us</h4>
+                            <ul>
+                                <p><b>Konsult Inc</b><br>
+                                    1st Floor, Survey No 44, <br>
+                                    Rasoolpura Secunderabad, <br>
+                                    Hyderabad - 500 003</p>
+                                <li><a routerLink="/register">Email: hello@konsult.com</a></li>
+                                <li><a routerLink="/register">Phone: +91 97033 71164</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="container line-40 mt-50">
+                <div class="row">
+                    <div class="col-sm-6">
+                        © Copyright ©2021 Kontact Inc, All rights reserved.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="social-align">
+                            <a routerLink="/register">
+                                <span class="social-icon"><i class="fa fa-facebook" aria-hidden="true"></i></span>
+                            </a>
+                            <a routerLink="/register">
+                                <span class="social-icon"><i class="fa fa-twitter" aria-hidden="true"></i></span>
+                            </a>
+                            <a routerLink="/register">
+                                <span class="social-icon"><i class="fa fa-linkedin" aria-hidden="true"></i></span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+
+
+<!-- JAVASCRIPT -->
+<!-- <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/js/pages/dashboard.init.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/owl.carousel.js"></script> -->
+
+
+<script>
+    $(document).ready(function () {
+
+        var owl = $("#owl-demo"),
+            status = $("#owlStatus");
+
+        owl.owlCarousel({
+            navigation: true,
+            afterAction: afterAction,
+            navigationText: [
+                "<i class='fa fa-angle-left'></i>",
+                "<i class='fa fa-angle-right'></i>"
+            ],
+        });
+
+
+
+        function updateResult(pos, value) {
+            status.find(pos).find(".result").text(value);
+        }
+
+        function afterAction() {
+            updateResult(".owlItems", this.owl.owlItems.length);
+            updateResult(".currentItem", this.owl.currentItem);
+            updateResult(".prevItem", this.prevItem);
+            updateResult(".visibleItems", this.owl.visibleItems);
+            updateResult(".dragDirection", this.owl.dragDirection);
+        }
+
+    });
+</script>
+
+<script>
+    try {
+        var srcOld = $('.video-mo-01').children('iframe').attr('src');
+
+        $('[data-target="#modal-video-01"]').on('click', function () {
+            $('.video-mo-01').children('iframe')[0].src += "&autoplay=1";
+
+            setTimeout(function () {
+                $('.video-mo-01').css('opacity', '1');
+            }, 300);
+        });
+
+        $('[data-dismiss="modal"]').on('click', function () {
+            $('.video-mo-01').children('iframe')[0].src = srcOld;
+            $('.video-mo-01').css('opacity', '0');
+        });
+    } catch (er) { console.log(er); }
+</script>
+
+
+<!-- 
+</body>
+
+</html> -->

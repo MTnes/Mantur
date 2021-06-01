@@ -9,7 +9,7 @@ import { Subject } from 'rxjs/Subject';
 export class MemberCommService {
 
   baseUrl = "https://mantur-server.herokuapp.com"
-  token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTRlMTdlOWEzYWM0MDAxNTUzNzNiMSIsImlhdCI6MTYyMTQxODM2NiwiZXhwIjoxNjMwMDU4MzY2fQ.4pdS8SvO7RZCww59_to-zT-fWjlUJ0zRZ7wAPv8XFkg";
+  token = localStorage.getItem('token');
   isFetched = false;
   fullyFetched = new Subject<boolean>();
 
@@ -88,12 +88,6 @@ export class MemberCommService {
     )
   }
 
-  updateRating(rating: number) {
-    let header = new HttpHeaders();
-    header = header.set('Authorization', "Bearer " + this.token);
-    return this.http.put(this.baseUrl + "/api/user", { 'rating': rating } ,{ headers: header })
-  }
-
   updateProfilePic(src: string) {
     let header = new HttpHeaders();
     header = header.set('Authorization', "Bearer " + this.token);
@@ -125,7 +119,8 @@ export class MemberCommService {
                         fees: number}) {
       let header = new HttpHeaders();
       header = header.set('Authorization', "Bearer " + this.token);
-      return this.http.put(this.baseUrl + "/api/user", data ,{ headers: header })
+      return this.http.put(this.baseUrl + "/api/user", {'firstName': data.firstName, 'lastName': data.lastName, 'location': data.location, 'profession': data.profession, 'bannerImage': data.bannerImage, 'about': data.about, 'services': data.services, 'fees': data.fees } ,{ headers: header })
+      // return this.http.put(this.baseUrl + "/api/user", data ,{ headers: header })
   }
 
   updateFeatured(data : string[]) {
